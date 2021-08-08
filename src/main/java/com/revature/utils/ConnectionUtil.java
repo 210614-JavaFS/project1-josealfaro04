@@ -14,7 +14,7 @@ public class ConnectionUtil {
 			e.printStackTrace();
 		}
 		
-		String url = "jdbc:postgresql://java-react-210614.ceywaohkyxhh.us-west-1.rds.amazonaws.com:5432/project0";
+		String url = "jdbc:postgresql://java-react-210614.ceywaohkyxhh.us-west-1.rds.amazonaws.com:5432/project1";
 		String username = "postgres";
 		String password = "password";
 		

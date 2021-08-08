@@ -7,12 +7,13 @@ public class ErsReimbursement {
 	private String reimbResolved;
 	private String reimbDescription;
 	//private String receipt;
-	private int reimbAuthor;
-	private int reimbResolver;
-	private int reimbStatusId;
-	private int reimbTypeId;
+	private String reimbAuthor;
+	private String reimbResolver;
+	private String reimbStatusId;
+	private String reimbTypeId;
 	public ErsReimbursement(int reimbId, double reimbAmount, String reimbSubmitted, String reimbResolved,
-			String reimbDescription, int reimbAuthor, int reimbResolver, int reimbStatusId, int reimbTypeId) {
+			String reimbDescription, String reimbAuthor, String reimbResolver, String reimbStatusId,
+			String reimbTypeId) {
 		super();
 		this.reimbId = reimbId;
 		this.reimbAmount = reimbAmount;
@@ -57,28 +58,28 @@ public class ErsReimbursement {
 	public void setReimbDescription(String reimbDescription) {
 		this.reimbDescription = reimbDescription;
 	}
-	public int getReimbAuthor() {
+	public String getReimbAuthor() {
 		return reimbAuthor;
 	}
-	public void setReimbAuthor(int reimbAuthor) {
+	public void setReimbAuthor(String reimbAuthor) {
 		this.reimbAuthor = reimbAuthor;
 	}
-	public int getReimbResolver() {
+	public String getReimbResolver() {
 		return reimbResolver;
 	}
-	public void setReimbResolver(int reimbResolver) {
+	public void setReimbResolver(String reimbResolver) {
 		this.reimbResolver = reimbResolver;
 	}
-	public int getReimbStatusId() {
+	public String getReimbStatusId() {
 		return reimbStatusId;
 	}
-	public void setReimbStatusId(int reimbStatusId) {
+	public void setReimbStatusId(String reimbStatusId) {
 		this.reimbStatusId = reimbStatusId;
 	}
-	public int getReimbTypeId() {
+	public String getReimbTypeId() {
 		return reimbTypeId;
 	}
-	public void setReimbTypeId(int reimbTypeId) {
+	public void setReimbTypeId(String reimbTypeId) {
 		this.reimbTypeId = reimbTypeId;
 	}
 	@Override
@@ -88,14 +89,14 @@ public class ErsReimbursement {
 		long temp;
 		temp = Double.doubleToLongBits(reimbAmount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + reimbAuthor;
+		result = prime * result + ((reimbAuthor == null) ? 0 : reimbAuthor.hashCode());
 		result = prime * result + ((reimbDescription == null) ? 0 : reimbDescription.hashCode());
 		result = prime * result + reimbId;
 		result = prime * result + ((reimbResolved == null) ? 0 : reimbResolved.hashCode());
-		result = prime * result + reimbResolver;
-		result = prime * result + reimbStatusId;
+		result = prime * result + ((reimbResolver == null) ? 0 : reimbResolver.hashCode());
+		result = prime * result + ((reimbStatusId == null) ? 0 : reimbStatusId.hashCode());
 		result = prime * result + ((reimbSubmitted == null) ? 0 : reimbSubmitted.hashCode());
-		result = prime * result + reimbTypeId;
+		result = prime * result + ((reimbTypeId == null) ? 0 : reimbTypeId.hashCode());
 		return result;
 	}
 	@Override
@@ -109,7 +110,10 @@ public class ErsReimbursement {
 		ErsReimbursement other = (ErsReimbursement) obj;
 		if (Double.doubleToLongBits(reimbAmount) != Double.doubleToLongBits(other.reimbAmount))
 			return false;
-		if (reimbAuthor != other.reimbAuthor)
+		if (reimbAuthor == null) {
+			if (other.reimbAuthor != null)
+				return false;
+		} else if (!reimbAuthor.equals(other.reimbAuthor))
 			return false;
 		if (reimbDescription == null) {
 			if (other.reimbDescription != null)
@@ -123,16 +127,25 @@ public class ErsReimbursement {
 				return false;
 		} else if (!reimbResolved.equals(other.reimbResolved))
 			return false;
-		if (reimbResolver != other.reimbResolver)
+		if (reimbResolver == null) {
+			if (other.reimbResolver != null)
+				return false;
+		} else if (!reimbResolver.equals(other.reimbResolver))
 			return false;
-		if (reimbStatusId != other.reimbStatusId)
+		if (reimbStatusId == null) {
+			if (other.reimbStatusId != null)
+				return false;
+		} else if (!reimbStatusId.equals(other.reimbStatusId))
 			return false;
 		if (reimbSubmitted == null) {
 			if (other.reimbSubmitted != null)
 				return false;
 		} else if (!reimbSubmitted.equals(other.reimbSubmitted))
 			return false;
-		if (reimbTypeId != other.reimbTypeId)
+		if (reimbTypeId == null) {
+			if (other.reimbTypeId != null)
+				return false;
+		} else if (!reimbTypeId.equals(other.reimbTypeId))
 			return false;
 		return true;
 	}
@@ -143,6 +156,9 @@ public class ErsReimbursement {
 				+ ", reimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver + ", reimbStatusId="
 				+ reimbStatusId + ", reimbTypeId=" + reimbTypeId + "]";
 	}
+	
+	
+	
 	
 	
 
