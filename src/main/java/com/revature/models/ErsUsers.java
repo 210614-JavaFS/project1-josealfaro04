@@ -8,10 +8,11 @@ public class ErsUsers {
 	private String userFirstName;
 	private String userLastName;
 	private String userEmail;
+	private String userRole;
 	private int userRoleId;
 	
 	public ErsUsers(int ersUsersId, String ersUsername, String ersPassword, String userFirstName, String userLastName,
-			String userEmail, int userRoleId) {
+			String userEmail, String userRole, int userRoleId) {
 		super();
 		this.ersUsersId = ersUsersId;
 		this.ersUsername = ersUsername;
@@ -19,6 +20,7 @@ public class ErsUsers {
 		this.userFirstName = userFirstName;
 		this.userLastName = userLastName;
 		this.userEmail = userEmail;
+		this.userRole = userRole;
 		this.userRoleId = userRoleId;
 	}
 	public ErsUsers() {
@@ -66,6 +68,12 @@ public class ErsUsers {
 	public void setUserRoleId(int userRoleId) {
 		this.userRoleId = userRoleId;
 	}
+	public String getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,6 +84,7 @@ public class ErsUsers {
 		result = prime * result + ((userEmail == null) ? 0 : userEmail.hashCode());
 		result = prime * result + ((userFirstName == null) ? 0 : userFirstName.hashCode());
 		result = prime * result + ((userLastName == null) ? 0 : userLastName.hashCode());
+		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		result = prime * result + userRoleId;
 		return result;
 	}
@@ -115,6 +124,11 @@ public class ErsUsers {
 				return false;
 		} else if (!userLastName.equals(other.userLastName))
 			return false;
+		if (userRole == null) {
+			if (other.userRole != null)
+				return false;
+		} else if (!userRole.equals(other.userRole))
+			return false;
 		if (userRoleId != other.userRoleId)
 			return false;
 		return true;
@@ -123,9 +137,10 @@ public class ErsUsers {
 	public String toString() {
 		return "ErsUsers [ersUsersId=" + ersUsersId + ", ersUsername=" + ersUsername + ", ersPassword=" + ersPassword
 				+ ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + ", userEmail=" + userEmail
-				+ ", userRoleId=" + userRoleId + "]";
-	} 
+				+ ", userRole=" + userRole + ", userRoleId=" + userRoleId + "]";
+	}
 	
+
 	
 
 }
